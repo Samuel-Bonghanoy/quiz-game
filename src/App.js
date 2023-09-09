@@ -31,6 +31,8 @@ function reducer(state, action) {
 function App() {
   const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
 
+  const numQuestions = questions.length;
+
   useEffect(() => {
     fetch("http://localhost:8000/questions")
       .then((res) => res.json())
@@ -39,12 +41,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="app">
       <Header />
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "ready" && <StartScreen />}
+        {status === "ready" && <StartScreen numQuestions={numQuestions} />}
       </Main>
     </div>
   );
