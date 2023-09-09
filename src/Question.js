@@ -1,5 +1,5 @@
 function Question() {
-  return;
+  return <div>question</div>;
 }
 
 export default Question;
